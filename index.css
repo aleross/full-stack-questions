@@ -1,0 +1,23 @@
+#site-nav .pill {
+    color: red;
+}
+
+div[id="site-nav"] .pill {
+    color: green;
+}
+
+.navigation > span {
+    color: blue;
+}
+
+.navigation > span:not(div) {
+    color: purple;
+}
+
+#site-nav > .navigation > span {
+    color: turquoise;
+}
+
+#site-nav span[role="navigation"] {
+    color: orange;
+}

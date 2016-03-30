@@ -1,1 +1,209 @@
-Hello world
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/themes/prism-okaidia.min.css">
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.4.1/prism.min.js"></script>
+</head>
+<body>
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Front-end: HTML, CSS & JavaScript</h1>
+        </div>
+    </div>
+    <section class="container">
+
+        <!-- Memory efficiency => use prototype, cache database connection -->
+        <!-- Use prototype, remove private function, cache DB connections -->
+        <article class="row">
+            <div class="col-sm-12">
+                <pre>
+                    <code class="language-js">
+
+                        // What might be wrong with this code? What can we do to improve it?
+                        // Note: assume uuid() and connectToDatabase() are available
+
+                        function Person(name) {
+
+                            var saveInDb = function () {
+                                var db = connectToDatabase();
+                                db.save({ name: this.name, id: this.id });
+                            }
+
+                            this.id = uuid();
+                            this.name = name || 'NA';
+
+                            this.initialize = function () {
+                                // do things
+                                saveInDb();
+                            }
+                        }
+
+                        var i = 1000000;
+                        while (i--) {
+                            var person = new Person('me' + i);
+                            person.initialize();
+                        }
+                    </code>
+                </pre>
+            </div>
+        </article>
+        <hr>
+
+        <!-- Typeof null -->
+        <!-- "match" -->
+        <article class="row">
+            <div class="col-sm-12">
+                <pre>
+                    <code class="language-js">
+
+                        // What gets logged?
+
+                        function compare() {
+                            var a = null,
+                                b = null;
+
+                            b = { bar: 'foo' };
+                            define();
+                            a = { foo: 'bar' };
+
+                            function define() {
+                                if (typeof a === typeof b) {
+                                    console.log('match');
+                                } else {
+                                    console.log('no match');
+                                }
+                            }
+                        }
+                    </code>
+                </pre>
+            </div>
+        </article>
+        <hr>
+
+        <!-- Objects/arrays -->
+        <!-- (1) Object.keys().length, (2) for/in, (3) add a length method -->
+        <article class="row">
+            <div class="col-sm-12">
+                <pre>
+                    <code class="language-js">
+                        // What's wrong? How can we fix it?
+
+                        var counter = {
+                            a: 0,
+                            b: 1,
+                            c: 2,
+                            d: 3
+                        };
+
+                        var message = 'There are ' + counter.length + ' elements.';
+                        window.alert(message);
+                    </code>
+                </pre>
+            </div>
+        </article>
+        <hr>
+
+        <!-- CSS inheritance -->
+        <!-- -->
+        <!-- ID: 100, classes: 10, attributes: 10, element: 1 -->
+        <article class="row">
+            <div class="col-sm-12">
+                <pre class="language-css">
+                    <code>
+
+                        /* What will the span's color be? How do you organize your CSS files to avoid conflicts? */
+
+                        #site-nav .pill {
+                            color: red;
+                        }
+
+                        div[id="site-nav"] .pill {
+                            color: green;
+                        }
+
+                        .navigation > span {
+                            color: blue;
+                        }
+
+                        .navigation > span:not(div) {
+                            color: purple;
+                        }
+
+                        #site-nav > .navigation > span {
+                            color: turquoise;
+                        }
+
+                        #site-nav span[role="navigation"] {
+                            color: orange;
+                        }
+                    </code>
+                </pre>
+
+                <pre class="language-html">
+                    <code>
+                        &lt;div id="site-nav"&gt;
+                            &lt;div class="navigation"&gt;
+                                &lt;span class="pill" role="navigation"&gt;&lt;/span&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    </code>
+                </pre>
+            </div>
+        </article>
+        <hr>
+
+        <!-- Box-model: includes padding and border in box model -->
+        <!-- 60px and 40px both including includes border (outside of box) -->
+        <!-- without border-box? 50px and 90px -->
+        <article class="row">
+            <div class="col-sm-12">
+                <pre class="language-css">
+                    <code>
+                        /* What is the content box width, and the width of the black square? */
+
+                        #element {
+                            display: inline-block;
+                            background: black;
+
+                            box-sizing: border-box;
+                            width: 50px;
+                            height: 50px;
+
+                            margin: 50px;
+                            padding: 20px;
+                            border: 10px solid grey;
+                        }
+                    </code>
+                </pre>
+            </div>
+        </article>
+        <hr>
+
+        <article>
+            <div class="col-sm-12">
+                <ul style="padding-bottom: 40px">
+                    <li>What are your favorite features of ES6?</li>
+                    <li>Explain CSS sprites</li>
+                    <li>What is a CSS reset file? How does it compare to normalize.css?</li>
+                    <li>What are data-* attributes good for?</li>
+                    <li>What tools do you use for cross-browser testing?</li>
+                    <li>Name 3 ways to decrease page load (perceived or actual)</li>
+                    <li>Explain how XSS works</li>
+                    <li>What does CORS stand for and what is it all about?</li>
+                    <li>Which frameworks, transpilers, and build tools do you enjoy?</li>
+                    <li>What's something you learned recently?</li>
+                    <li>What work are you most proud of?</li>
+                    <li>Can you share a time you've dealt with challenges when working with product or marketing?</li>
+                </ul>
+            </div>
+        </article>
+
+    </section>
+    <div class="jumbotron" style="margin-bottom: 0;">
+        <div class="container">
+            <h1>Have a nice day!</h1>
+        </div>
+    </div>
+</body>
