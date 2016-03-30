@@ -31,11 +31,10 @@
                                 db.save({ name: this.name, id: this.id });
                             }
 
-                            this.id = uuid();
                             this.name = name || 'NA';
 
                             this.initialize = function () {
-                                // do things
+                                this.id = uuid();
                                 saveInDb();
                             }
                         }
